@@ -1,0 +1,25 @@
+update-rc.d -f nginx defaults
+
+
+#[optional remove the upstart script]
+update-rc.d -f nginx remove
+
+
+
+
+advanced Configuration
+
+If you need to override the values within the script you should use /etc/defaults/nginx.
+
+You can override any of these values:
+
+PATH
+DAEMON
+PS
+PIDNAME
+PIDFILE
+PIDSPATH
+DESCRIPTION
+RUNAS
+lockfile
+NGINX_CONF_FILE
