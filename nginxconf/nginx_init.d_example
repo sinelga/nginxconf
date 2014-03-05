@@ -80,12 +80,12 @@ test -r $LSB_FUNC || {
 #                               Consts
 #------------------------------------------------------------------------------
 PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
-DAEMON=/usr/local/nginx/sbin/nginx
+DAEMON=/home/juno/git/nginxconf/nginxconf/nginx/sbin/nginx
 
 PS="nginx"
 PIDNAME="nginx"                     #lets you do $PS-slave
 PIDFILE=$PIDNAME.pid                #pid file
-PIDSPATH=/usr/local/nginx/logs      #default pid location, you should change it
+PIDSPATH=/home/juno/git/nginxconf/nginxconf/nginx/logs      #default pid location, you should change it
 
 DESCRIPTION="Nginx Server..."
 
@@ -97,7 +97,7 @@ TRUE=1                              #boolean
 FALSE=0                             #boolean
 
 lockfile=/var/lock/subsys/nginx
-NGINX_CONF_FILE="/usr/local/nginx/conf/nginx.conf"
+NGINX_CONF_FILE="/home/juno/git/nginxconf/nginxconf/nginx/conf/nginx.conf"
 
 #------------------------------------------------------------------------------
 #                               Simple Tests
