@@ -26,8 +26,8 @@ fastcgi_param   HTTP_X_PATHINFO	 $request_uri;
 fastcgi_param   HTTP_X_CALLBACK	$arg_callback;
 fastcgi_param   HTTP_X_BOT  $bot;  
 fastcgi_param   HTTP_X_ROOTDIR  $rootdir;
-fastcgi_param   HTTP_X_REDISID $arg_redisid;
+#fastcgi_param   HTTP_X_REDISID $arg_redisid;
 
 
 # PHP only, required if PHP was built with --enable-force-cgi-redirect
-fastcgi_param	REDIRECT_STATUS		200;
+#fastcgi_param	REDIRECT_STATUS		200;
