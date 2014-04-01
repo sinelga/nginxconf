@@ -8,8 +8,6 @@ make libdrizzle-1.0
 make install-libdrizzle-1.0
 
 
-
-
 cp -a nginx/  nginxlast
 
 apt-get autoremove --purge nginx-extras
@@ -28,3 +26,8 @@ ippayment
 #./configure --prefix=/home/juno/git/nginxconf/nginxconf/nginx --user=juno --group=juno --with-http_gzip_static_module
 
 ./configure --prefix=/home/juno/git/nginxconf/nginxconf/nginx --user=juno --group=juno --conf-path=conf/ippaymentinfo.conf
+
+
+nginxbancario
+
+./configure --prefix=/home/juno/git/nginxconf/nginxconf/nginx --user=juno --group=juno --conf-path=conf/nginxbancario.conf --with-http_gzip_static_module --with-http_image_filter_module
