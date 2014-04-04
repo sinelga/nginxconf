@@ -33,6 +33,9 @@ nginxbancario
 nginxvakutus
 ./configure --prefix=/home/juno/git/nginxconf/nginxconf/nginx --user=juno --group=juno --conf-path=conf/nginxvakutus.conf --with-http_gzip_static_module
 
+tube
+./configure --prefix=/home/juno/git/nginxconf/nginxconf/nginx --user=juno --group=juno --conf-path=conf/tube.conf --with-http_gzip_static_module
+
 
 
 
