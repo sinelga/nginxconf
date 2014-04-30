@@ -20,6 +20,13 @@ adduser --system --no-create-home --disabled-login --disabled-password --group n
 ./configure --prefix=/opt/nginx --user=nginx --group=nginx --with-http_gzip_static_module --with-http_image_filter_module 
 
 
+--------------------------------
+
+apt-get install libpcre3 libpcre3-dev
+apt-get install zlib1g-dev
+
+
+
 ippayment 
 
 #./configure --prefix=/home/juno/git/nginxconf/nginxconf/nginx --user=juno --group=juno --with-http_gzip_static_module
@@ -27,6 +34,8 @@ ippayment
 ./configure --prefix=/home/juno/git/nginxconf/nginxconf/nginx --user=juno --group=juno --conf-path=conf/ippaymentinfo.conf
 
 nginxbancario
+
+apt-get install libgd2-noxpm-dev  #for images only BIG!!
 
 ./configure --prefix=/home/juno/git/nginxconf/nginxconf/nginx --user=juno --group=juno --conf-path=conf/nginxbancario.conf --with-http_gzip_static_module --with-http_image_filter_module
 
