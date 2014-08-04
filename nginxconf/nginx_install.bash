@@ -52,7 +52,9 @@ git clone https://github.com/openresty/echo-nginx-module.git
 
 
 
+commonredisfeeder
 
+./configure --prefix=/home/juno/git/nginxconf/nginxconf/nginx --user=juno --group=juno --conf-path=conf/commonredisfeeder.conf 
 
 
 
