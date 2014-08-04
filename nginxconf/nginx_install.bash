@@ -21,11 +21,11 @@ adduser --system --no-create-home --disabled-login --disabled-password --group n
 
 
 --------------------------------
-
+for all install
 apt-get install libpcre3 libpcre3-dev
 apt-get install zlib1g-dev
 
-
+-------------------------------------
 
 ippayment 
 
