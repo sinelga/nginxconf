@@ -22,6 +22,7 @@ adduser --system --no-create-home --disabled-login --disabled-password --group n
 
 --------------------------------
 for all install
+apt-get install build-essential
 apt-get install libpcre3 libpcre3-dev
 apt-get install zlib1g-dev
 
@@ -51,10 +52,14 @@ git clone https://github.com/openresty/echo-nginx-module.git
 ./configure --prefix=/home/juno/git/nginxconf/nginxconf/nginx --user=juno --group=juno --conf-path=conf/fortune.conf --with-http_gzip_static_module --add-module=../echo-nginx-module
 
 
-
 commonredisfeeder
 
-./configure --prefix=/home/juno/git/nginxconf/nginxconf/nginx --user=juno --group=juno --conf-path=conf/commonredisfeeder.conf 
+./configure --prefix=/home/juno/git/nginxconf/nginxconf/nginx --user=juno --group=juno --conf-path=conf/commonredisfeeder.conf
+
+common0
+./configure --prefix=/home/juno/git/nginxconf/nginxconf/nginx --user=juno --group=juno --conf-path=conf/config0.conf --with-http_gzip_static_module
+
+ 
 
 
 
