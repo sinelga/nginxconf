@@ -56,7 +56,7 @@ commonredisfeeder
 
 apt-get install libgd2-noxpm-dev
 
-./configure --prefix=/home/juno/git/nginxconf/nginxconf/nginx --user=juno --group=juno --conf-path=conf/commonredisfeeder.conf -with-http_image_filter_module
+./configure --prefix=/home/juno/git/nginxconf/nginxconf/nginx --user=juno --group=juno --conf-path=conf/commonredisfeeder.conf --with-http_image_filter_module
 
 common0
 ./configure --prefix=/home/juno/git/nginxconf/nginxconf/nginx --user=juno --group=juno --conf-path=conf/config0.conf --with-http_gzip_static_module
