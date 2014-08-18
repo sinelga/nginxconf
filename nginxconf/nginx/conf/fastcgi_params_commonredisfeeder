@@ -18,11 +18,7 @@ fastcgi_param	REMOTE_PORT		$remote_port;
 fastcgi_param	SERVER_ADDR		$server_addr;
 fastcgi_param	SERVER_PORT		$server_port;
 fastcgi_param	SERVER_NAME		$server_name;
-#fastcgi_param	HTTP_X_THEMES	$arg_themes;
-#fastcgi_param   HTTP_X_LOCALE   $arg_locale;
-#fastcgi_param   HTTP_X_DOMAIN	$host;
-#fastcgi_param   HTTP_X_PATHINFO	 $request_uri;
+
 fastcgi_param   HTTP_X_CALLBACK	$arg_callback;
-#fastcgi_param   HTTP_X_BOT  $bot;  
-#fastcgi_param   HTTP_X_ROOTDIR  $rootdir;
 fastcgi_param   HTTP_X_REDISID $arg_redisid;
+fastcgi_param   HTTP_X_REDISDO $arg_redisdo;
