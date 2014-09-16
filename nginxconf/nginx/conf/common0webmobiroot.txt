@@ -1,2 +1,0 @@
-*.pilluseksi.com	/dartapp/build/web;
-*.pilluseksi.info	/dartapp/build/web;

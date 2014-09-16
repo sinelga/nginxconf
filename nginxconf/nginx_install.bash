@@ -61,6 +61,9 @@ apt-get install libgd2-noxpm-dev
 common0
 ./configure --prefix=/home/juno/git/nginxconf/nginxconf/nginx --user=juno --group=juno --conf-path=conf/config0.conf --with-http_gzip_static_module
 
+common1
+./configure --prefix=/home/juno/git/nginxconf/nginxconf/nginx --user=juno --group=juno --conf-path=conf/config1.conf --with-http_gzip_static_module
+
  
 
 
