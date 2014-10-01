@@ -67,6 +67,9 @@ common1
 common2
 ./configure --prefix=/home/juno/git/nginxconf/nginxconf/nginx --user=juno --group=juno --conf-path=conf/common2.conf --with-http_gzip_static_module
 
+common3
+./configure --prefix=/home/juno/git/nginxconf/nginxconf/nginx --user=juno --group=juno --conf-path=conf/common3.conf --with-http_gzip_static_module
+
  
 
 
