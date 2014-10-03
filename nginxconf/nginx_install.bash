@@ -75,6 +75,9 @@ common4
 
 common5
 ./configure --prefix=/home/juno/git/nginxconf/nginxconf/nginx --user=juno --group=juno --conf-path=conf/common5.conf --with-http_gzip_static_module --with-http_geoip_module
+
+common6
+./configure --prefix=/home/juno/git/nginxconf/nginxconf/nginx --user=juno --group=juno --conf-path=conf/common6.conf --with-http_gzip_static_module --with-http_geoip_module
  
 
 
