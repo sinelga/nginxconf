@@ -84,6 +84,10 @@ common7 "fi_FIfortune"
 
 common8 
 ./configure --prefix=/home/juno/git/nginxconf/nginxconf/nginx --user=juno --group=juno --conf-path=conf/common8.conf --with-http_gzip_static_module --with-http_geoip_module
+
+
+common10 
+./configure --prefix=/home/juno/git/nginxconf/nginxconf/nginx --user=juno --group=juno --conf-path=conf/common10.conf --with-http_gzip_static_module --with-http_geoip_module
  
 
 
