@@ -1127,7 +1127,7 @@ manpage:	objs/nginx.8
 objs/nginx.8:	man/nginx.8 objs/ngx_auto_config.h
 	sed -e "s|%%PREFIX%%|/home/juno/git/nginxconf/nginxconf/nginx|" \
 		-e "s|%%PID_PATH%%|/home/juno/git/nginxconf/nginxconf/nginx/logs/nginx.pid|" \
-		-e "s|%%CONF_PATH%%|/home/juno/git/nginxconf/nginxconf/nginx/conf/common11.conf|" \
+		-e "s|%%CONF_PATH%%|/home/juno/git/nginxconf/nginxconf/nginx/conf/common12.conf|" \
 		-e "s|%%ERROR_LOG_PATH%%|/home/juno/git/nginxconf/nginxconf/nginx/logs/error.log|" \
 		< man/nginx.8 > $@
 
@@ -1159,7 +1159,7 @@ install:	objs/nginx
 	test -f '$(DESTDIR)/home/juno/git/nginxconf/nginxconf/nginx/conf/scgi_params' 		|| cp conf/scgi_params '$(DESTDIR)/home/juno/git/nginxconf/nginxconf/nginx/conf'
 	cp conf/scgi_params 		'$(DESTDIR)/home/juno/git/nginxconf/nginxconf/nginx/conf/scgi_params.default'
 
-	test -f '$(DESTDIR)/home/juno/git/nginxconf/nginxconf/nginx/conf/common11.conf' 		|| cp conf/nginx.conf '$(DESTDIR)/home/juno/git/nginxconf/nginxconf/nginx/conf/common11.conf'
+	test -f '$(DESTDIR)/home/juno/git/nginxconf/nginxconf/nginx/conf/common12.conf' 		|| cp conf/nginx.conf '$(DESTDIR)/home/juno/git/nginxconf/nginxconf/nginx/conf/common12.conf'
 	cp conf/nginx.conf '$(DESTDIR)/home/juno/git/nginxconf/nginxconf/nginx/conf/nginx.conf.default'
 
 	test -d '$(DESTDIR)/home/juno/git/nginxconf/nginxconf/nginx/logs' 		|| mkdir -p '$(DESTDIR)/home/juno/git/nginxconf/nginxconf/nginx/logs'

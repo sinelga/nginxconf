@@ -1,4 +1,4 @@
-#define NGX_CONFIGURE " --prefix=/home/juno/git/nginxconf/nginxconf/nginx --user=juno --group=juno --conf-path=conf/common11.conf --with-http_gzip_static_module --with-http_geoip_module"
+#define NGX_CONFIGURE " --prefix=/home/juno/git/nginxconf/nginxconf/nginx --user=juno --group=juno --conf-path=conf/common12.conf --with-http_gzip_static_module --with-http_geoip_module"
 
 #ifndef NGX_COMPILER
 #define NGX_COMPILER  "gcc 4.8.2 (Ubuntu 4.8.2-19ubuntu1) "
@@ -364,7 +364,7 @@
 
 
 #ifndef NGX_CONF_PATH
-#define NGX_CONF_PATH  "conf/common11.conf"
+#define NGX_CONF_PATH  "conf/common12.conf"
 #endif
 
 
