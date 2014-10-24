@@ -1,6 +1,6 @@
 
 CC =	cc
-CFLAGS =  -pipe  -O -W -Wall -Wpointer-arith -Wno-unused-parameter -Werror -g 
+CFLAGS =  -pipe  -O -W -Wall -Wpointer-arith -Wno-unused-parameter -Werror -g  -DNDK_SET_VAR -DNDK_UPSTREAM_LIST
 CPP =	cc -E
 LINK =	$(CC)
 
@@ -9,9 +9,12 @@ ALL_INCS = -I src/core \
 	-I src/event \
 	-I src/event/modules \
 	-I src/os/unix \
+	-I ../ngx_devel_kit/objs \
+	-I objs/addon/ndk \
 	-I objs \
 	-I src/http \
 	-I src/http/modules \
+	-I ../ngx_devel_kit/src \
 	-I src/mail
 
 
@@ -71,6 +74,7 @@ CORE_DEPS = src/core/nginx.h \
 	src/os/unix/ngx_process_cycle.h \
 	src/os/unix/ngx_linux_config.h \
 	src/os/unix/ngx_linux.h \
+	src/event/ngx_event_openssl.h \
 	src/core/ngx_regex.h \
 	objs/ngx_auto_config.h
 
@@ -79,6 +83,8 @@ CORE_INCS = -I src/core \
 	-I src/event \
 	-I src/event/modules \
 	-I src/os/unix \
+	-I ../ngx_devel_kit/objs \
+	-I objs/addon/ndk \
 	-I objs
 
 
@@ -92,11 +98,16 @@ HTTP_DEPS = src/http/ngx_http.h \
 	src/http/ngx_http_upstream.h \
 	src/http/ngx_http_upstream_round_robin.h \
 	src/http/ngx_http_busy_lock.h \
-	src/http/modules/ngx_http_ssi_filter_module.h
+	src/http/modules/ngx_http_ssi_filter_module.h \
+	src/http/modules/ngx_http_ssl_module.h
 
 
 HTTP_INCS = -I src/http \
-	-I src/http/modules
+	-I src/http/modules \
+	-I ../ngx_devel_kit/src
+
+
+ADDON_DEPS = $(CORE_DEPS)  ../set-misc-nginx-module-0.26/src/ddebug.h ../set-misc-nginx-module-0.26/src/ngx_http_set_default_value.h ../set-misc-nginx-module-0.26/src/ngx_http_set_hashed_upstream.h ../set-misc-nginx-module-0.26/src/ngx_http_set_quote_sql.h ../set-misc-nginx-module-0.26/src/ngx_http_set_quote_json.h ../set-misc-nginx-module-0.26/src/ngx_http_set_unescape_uri.h ../set-misc-nginx-module-0.26/src/ngx_http_set_escape_uri.h ../set-misc-nginx-module-0.26/src/ngx_http_set_hash.h ../set-misc-nginx-module-0.26/src/ngx_http_set_local_today.h ../set-misc-nginx-module-0.26/src/ngx_http_set_hex.h ../set-misc-nginx-module-0.26/src/ngx_http_set_base64.h ../set-misc-nginx-module-0.26/src/ngx_http_set_random.h ../set-misc-nginx-module-0.26/src/ngx_http_set_rotate.h ../set-misc-nginx-module-0.26/src/ngx_http_set_secure_random.h ../set-misc-nginx-module-0.26/src/ngx_http_set_misc_module.h ../set-misc-nginx-module-0.26/src/ngx_http_set_hmac.h ../echo-nginx-module/src/ngx_http_echo_module.h ../echo-nginx-module/src/ddebug.h ../echo-nginx-module/src/ngx_http_echo_handler.h ../echo-nginx-module/src/ngx_http_echo_util.h ../echo-nginx-module/src/ngx_http_echo_sleep.h ../echo-nginx-module/src/ngx_http_echo_filter.h ../echo-nginx-module/src/ngx_http_echo_var.h ../echo-nginx-module/src/ngx_http_echo_location.h ../echo-nginx-module/src/ngx_http_echo_echo.h ../echo-nginx-module/src/ngx_http_echo_request_info.h ../echo-nginx-module/src/ngx_http_echo_subrequest.h ../echo-nginx-module/src/ngx_http_echo_foreach.h $(HTTP_DEPS)
 
 
 objs/nginx:	objs/src/core/nginx.o \
@@ -159,6 +170,8 @@ objs/nginx:	objs/src/core/nginx.o \
 	objs/src/os/unix/ngx_linux_init.o \
 	objs/src/event/modules/ngx_epoll_module.o \
 	objs/src/os/unix/ngx_linux_sendfile_chain.o \
+	objs/src/event/ngx_event_openssl.o \
+	objs/src/event/ngx_event_openssl_stapling.o \
 	objs/src/core/ngx_regex.o \
 	objs/src/http/ngx_http.o \
 	objs/src/http/ngx_http_core_module.o \
@@ -200,6 +213,7 @@ objs/nginx:	objs/src/core/nginx.o \
 	objs/src/http/modules/ngx_http_split_clients_module.o \
 	objs/src/http/modules/ngx_http_referer_module.o \
 	objs/src/http/modules/ngx_http_rewrite_module.o \
+	objs/src/http/modules/ngx_http_ssl_module.o \
 	objs/src/http/modules/ngx_http_proxy_module.o \
 	objs/src/http/modules/ngx_http_fastcgi_module.o \
 	objs/src/http/modules/ngx_http_uwsgi_module.o \
@@ -211,6 +225,35 @@ objs/nginx:	objs/src/core/nginx.o \
 	objs/src/http/modules/ngx_http_upstream_ip_hash_module.o \
 	objs/src/http/modules/ngx_http_upstream_least_conn_module.o \
 	objs/src/http/modules/ngx_http_upstream_keepalive_module.o \
+	objs/addon/src/ndk.o \
+	objs/addon/src/ngx_http_set_base32.o \
+	objs/addon/src/ngx_http_set_default_value.o \
+	objs/addon/src/ngx_http_set_hashed_upstream.o \
+	objs/addon/src/ngx_http_set_quote_sql.o \
+	objs/addon/src/ngx_http_set_quote_json.o \
+	objs/addon/src/ngx_http_set_unescape_uri.o \
+	objs/addon/src/ngx_http_set_misc_module.o \
+	objs/addon/src/ngx_http_set_escape_uri.o \
+	objs/addon/src/ngx_http_set_hash.o \
+	objs/addon/src/ngx_http_set_local_today.o \
+	objs/addon/src/ngx_http_set_hex.o \
+	objs/addon/src/ngx_http_set_base64.o \
+	objs/addon/src/ngx_http_set_random.o \
+	objs/addon/src/ngx_http_set_secure_random.o \
+	objs/addon/src/ngx_http_set_rotate.o \
+	objs/addon/src/ngx_http_set_hmac.o \
+	objs/addon/src/ngx_http_echo_module.o \
+	objs/addon/src/ngx_http_echo_util.o \
+	objs/addon/src/ngx_http_echo_timer.o \
+	objs/addon/src/ngx_http_echo_var.o \
+	objs/addon/src/ngx_http_echo_handler.o \
+	objs/addon/src/ngx_http_echo_filter.o \
+	objs/addon/src/ngx_http_echo_sleep.o \
+	objs/addon/src/ngx_http_echo_location.o \
+	objs/addon/src/ngx_http_echo_echo.o \
+	objs/addon/src/ngx_http_echo_request_info.o \
+	objs/addon/src/ngx_http_echo_subrequest.o \
+	objs/addon/src/ngx_http_echo_foreach.o \
 	objs/ngx_modules.o
 
 	$(LINK) -o objs/nginx \
@@ -274,6 +317,8 @@ objs/nginx:	objs/src/core/nginx.o \
 	objs/src/os/unix/ngx_linux_init.o \
 	objs/src/event/modules/ngx_epoll_module.o \
 	objs/src/os/unix/ngx_linux_sendfile_chain.o \
+	objs/src/event/ngx_event_openssl.o \
+	objs/src/event/ngx_event_openssl_stapling.o \
 	objs/src/core/ngx_regex.o \
 	objs/src/http/ngx_http.o \
 	objs/src/http/ngx_http_core_module.o \
@@ -315,6 +360,7 @@ objs/nginx:	objs/src/core/nginx.o \
 	objs/src/http/modules/ngx_http_split_clients_module.o \
 	objs/src/http/modules/ngx_http_referer_module.o \
 	objs/src/http/modules/ngx_http_rewrite_module.o \
+	objs/src/http/modules/ngx_http_ssl_module.o \
 	objs/src/http/modules/ngx_http_proxy_module.o \
 	objs/src/http/modules/ngx_http_fastcgi_module.o \
 	objs/src/http/modules/ngx_http_uwsgi_module.o \
@@ -326,8 +372,37 @@ objs/nginx:	objs/src/core/nginx.o \
 	objs/src/http/modules/ngx_http_upstream_ip_hash_module.o \
 	objs/src/http/modules/ngx_http_upstream_least_conn_module.o \
 	objs/src/http/modules/ngx_http_upstream_keepalive_module.o \
+	objs/addon/src/ndk.o \
+	objs/addon/src/ngx_http_set_base32.o \
+	objs/addon/src/ngx_http_set_default_value.o \
+	objs/addon/src/ngx_http_set_hashed_upstream.o \
+	objs/addon/src/ngx_http_set_quote_sql.o \
+	objs/addon/src/ngx_http_set_quote_json.o \
+	objs/addon/src/ngx_http_set_unescape_uri.o \
+	objs/addon/src/ngx_http_set_misc_module.o \
+	objs/addon/src/ngx_http_set_escape_uri.o \
+	objs/addon/src/ngx_http_set_hash.o \
+	objs/addon/src/ngx_http_set_local_today.o \
+	objs/addon/src/ngx_http_set_hex.o \
+	objs/addon/src/ngx_http_set_base64.o \
+	objs/addon/src/ngx_http_set_random.o \
+	objs/addon/src/ngx_http_set_secure_random.o \
+	objs/addon/src/ngx_http_set_rotate.o \
+	objs/addon/src/ngx_http_set_hmac.o \
+	objs/addon/src/ngx_http_echo_module.o \
+	objs/addon/src/ngx_http_echo_util.o \
+	objs/addon/src/ngx_http_echo_timer.o \
+	objs/addon/src/ngx_http_echo_var.o \
+	objs/addon/src/ngx_http_echo_handler.o \
+	objs/addon/src/ngx_http_echo_filter.o \
+	objs/addon/src/ngx_http_echo_sleep.o \
+	objs/addon/src/ngx_http_echo_location.o \
+	objs/addon/src/ngx_http_echo_echo.o \
+	objs/addon/src/ngx_http_echo_request_info.o \
+	objs/addon/src/ngx_http_echo_subrequest.o \
+	objs/addon/src/ngx_http_echo_foreach.o \
 	objs/ngx_modules.o \
-	-lpthread -lcrypt -lpcre -lcrypto -lcrypto -lz -lGeoIP
+	-lpthread -lcrypt -lpcre -lssl -lcrypto -ldl -lz -lGeoIP
 	
 
 
@@ -758,6 +833,20 @@ objs/src/os/unix/ngx_linux_sendfile_chain.o:	$(CORE_DEPS) \
 		src/os/unix/ngx_linux_sendfile_chain.c
 
 
+objs/src/event/ngx_event_openssl.o:	$(CORE_DEPS) \
+	src/event/ngx_event_openssl.c
+	$(CC) -c $(CFLAGS) $(CORE_INCS) \
+		-o objs/src/event/ngx_event_openssl.o \
+		src/event/ngx_event_openssl.c
+
+
+objs/src/event/ngx_event_openssl_stapling.o:	$(CORE_DEPS) \
+	src/event/ngx_event_openssl_stapling.c
+	$(CC) -c $(CFLAGS) $(CORE_INCS) \
+		-o objs/src/event/ngx_event_openssl_stapling.o \
+		src/event/ngx_event_openssl_stapling.c
+
+
 objs/src/core/ngx_regex.o:	$(CORE_DEPS) \
 	src/core/ngx_regex.c
 	$(CC) -c $(CFLAGS) $(CORE_INCS) \
@@ -1045,6 +1134,13 @@ objs/src/http/modules/ngx_http_rewrite_module.o:	$(CORE_DEPS) $(HTTP_DEPS) \
 		src/http/modules/ngx_http_rewrite_module.c
 
 
+objs/src/http/modules/ngx_http_ssl_module.o:	$(CORE_DEPS) $(HTTP_DEPS) \
+	src/http/modules/ngx_http_ssl_module.c
+	$(CC) -c $(CFLAGS) $(CORE_INCS) $(HTTP_INCS) \
+		-o objs/src/http/modules/ngx_http_ssl_module.o \
+		src/http/modules/ngx_http_ssl_module.c
+
+
 objs/src/http/modules/ngx_http_proxy_module.o:	$(CORE_DEPS) $(HTTP_DEPS) \
 	src/http/modules/ngx_http_proxy_module.c
 	$(CC) -c $(CFLAGS) $(CORE_INCS) $(HTTP_INCS) \
@@ -1120,6 +1216,209 @@ objs/src/http/modules/ngx_http_upstream_keepalive_module.o:	$(CORE_DEPS) $(HTTP_
 	$(CC) -c $(CFLAGS) $(CORE_INCS) $(HTTP_INCS) \
 		-o objs/src/http/modules/ngx_http_upstream_keepalive_module.o \
 		src/http/modules/ngx_http_upstream_keepalive_module.c
+
+
+objs/addon/src/ndk.o:	$(ADDON_DEPS) \
+	../ngx_devel_kit/src/ndk.c
+	$(CC) -c $(CFLAGS)  $(ALL_INCS) \
+		-o objs/addon/src/ndk.o \
+		../ngx_devel_kit/src/ndk.c
+
+
+objs/addon/src/ngx_http_set_base32.o:	$(ADDON_DEPS) \
+	../set-misc-nginx-module-0.26/src/ngx_http_set_base32.c
+	$(CC) -c $(CFLAGS)  $(ALL_INCS) \
+		-o objs/addon/src/ngx_http_set_base32.o \
+		../set-misc-nginx-module-0.26/src/ngx_http_set_base32.c
+
+
+objs/addon/src/ngx_http_set_default_value.o:	$(ADDON_DEPS) \
+	../set-misc-nginx-module-0.26/src/ngx_http_set_default_value.c
+	$(CC) -c $(CFLAGS)  $(ALL_INCS) \
+		-o objs/addon/src/ngx_http_set_default_value.o \
+		../set-misc-nginx-module-0.26/src/ngx_http_set_default_value.c
+
+
+objs/addon/src/ngx_http_set_hashed_upstream.o:	$(ADDON_DEPS) \
+	../set-misc-nginx-module-0.26/src/ngx_http_set_hashed_upstream.c
+	$(CC) -c $(CFLAGS)  $(ALL_INCS) \
+		-o objs/addon/src/ngx_http_set_hashed_upstream.o \
+		../set-misc-nginx-module-0.26/src/ngx_http_set_hashed_upstream.c
+
+
+objs/addon/src/ngx_http_set_quote_sql.o:	$(ADDON_DEPS) \
+	../set-misc-nginx-module-0.26/src/ngx_http_set_quote_sql.c
+	$(CC) -c $(CFLAGS)  $(ALL_INCS) \
+		-o objs/addon/src/ngx_http_set_quote_sql.o \
+		../set-misc-nginx-module-0.26/src/ngx_http_set_quote_sql.c
+
+
+objs/addon/src/ngx_http_set_quote_json.o:	$(ADDON_DEPS) \
+	../set-misc-nginx-module-0.26/src/ngx_http_set_quote_json.c
+	$(CC) -c $(CFLAGS)  $(ALL_INCS) \
+		-o objs/addon/src/ngx_http_set_quote_json.o \
+		../set-misc-nginx-module-0.26/src/ngx_http_set_quote_json.c
+
+
+objs/addon/src/ngx_http_set_unescape_uri.o:	$(ADDON_DEPS) \
+	../set-misc-nginx-module-0.26/src/ngx_http_set_unescape_uri.c
+	$(CC) -c $(CFLAGS)  $(ALL_INCS) \
+		-o objs/addon/src/ngx_http_set_unescape_uri.o \
+		../set-misc-nginx-module-0.26/src/ngx_http_set_unescape_uri.c
+
+
+objs/addon/src/ngx_http_set_misc_module.o:	$(ADDON_DEPS) \
+	../set-misc-nginx-module-0.26/src/ngx_http_set_misc_module.c
+	$(CC) -c $(CFLAGS)  $(ALL_INCS) \
+		-o objs/addon/src/ngx_http_set_misc_module.o \
+		../set-misc-nginx-module-0.26/src/ngx_http_set_misc_module.c
+
+
+objs/addon/src/ngx_http_set_escape_uri.o:	$(ADDON_DEPS) \
+	../set-misc-nginx-module-0.26/src/ngx_http_set_escape_uri.c
+	$(CC) -c $(CFLAGS)  $(ALL_INCS) \
+		-o objs/addon/src/ngx_http_set_escape_uri.o \
+		../set-misc-nginx-module-0.26/src/ngx_http_set_escape_uri.c
+
+
+objs/addon/src/ngx_http_set_hash.o:	$(ADDON_DEPS) \
+	../set-misc-nginx-module-0.26/src/ngx_http_set_hash.c
+	$(CC) -c $(CFLAGS)  $(ALL_INCS) \
+		-o objs/addon/src/ngx_http_set_hash.o \
+		../set-misc-nginx-module-0.26/src/ngx_http_set_hash.c
+
+
+objs/addon/src/ngx_http_set_local_today.o:	$(ADDON_DEPS) \
+	../set-misc-nginx-module-0.26/src/ngx_http_set_local_today.c
+	$(CC) -c $(CFLAGS)  $(ALL_INCS) \
+		-o objs/addon/src/ngx_http_set_local_today.o \
+		../set-misc-nginx-module-0.26/src/ngx_http_set_local_today.c
+
+
+objs/addon/src/ngx_http_set_hex.o:	$(ADDON_DEPS) \
+	../set-misc-nginx-module-0.26/src/ngx_http_set_hex.c
+	$(CC) -c $(CFLAGS)  $(ALL_INCS) \
+		-o objs/addon/src/ngx_http_set_hex.o \
+		../set-misc-nginx-module-0.26/src/ngx_http_set_hex.c
+
+
+objs/addon/src/ngx_http_set_base64.o:	$(ADDON_DEPS) \
+	../set-misc-nginx-module-0.26/src/ngx_http_set_base64.c
+	$(CC) -c $(CFLAGS)  $(ALL_INCS) \
+		-o objs/addon/src/ngx_http_set_base64.o \
+		../set-misc-nginx-module-0.26/src/ngx_http_set_base64.c
+
+
+objs/addon/src/ngx_http_set_random.o:	$(ADDON_DEPS) \
+	../set-misc-nginx-module-0.26/src/ngx_http_set_random.c
+	$(CC) -c $(CFLAGS)  $(ALL_INCS) \
+		-o objs/addon/src/ngx_http_set_random.o \
+		../set-misc-nginx-module-0.26/src/ngx_http_set_random.c
+
+
+objs/addon/src/ngx_http_set_secure_random.o:	$(ADDON_DEPS) \
+	../set-misc-nginx-module-0.26/src/ngx_http_set_secure_random.c
+	$(CC) -c $(CFLAGS)  $(ALL_INCS) \
+		-o objs/addon/src/ngx_http_set_secure_random.o \
+		../set-misc-nginx-module-0.26/src/ngx_http_set_secure_random.c
+
+
+objs/addon/src/ngx_http_set_rotate.o:	$(ADDON_DEPS) \
+	../set-misc-nginx-module-0.26/src/ngx_http_set_rotate.c
+	$(CC) -c $(CFLAGS)  $(ALL_INCS) \
+		-o objs/addon/src/ngx_http_set_rotate.o \
+		../set-misc-nginx-module-0.26/src/ngx_http_set_rotate.c
+
+
+objs/addon/src/ngx_http_set_hmac.o:	$(ADDON_DEPS) \
+	../set-misc-nginx-module-0.26/src/ngx_http_set_hmac.c
+	$(CC) -c $(CFLAGS)  $(ALL_INCS) \
+		-o objs/addon/src/ngx_http_set_hmac.o \
+		../set-misc-nginx-module-0.26/src/ngx_http_set_hmac.c
+
+
+objs/addon/src/ngx_http_echo_module.o:	$(ADDON_DEPS) \
+	../echo-nginx-module/src/ngx_http_echo_module.c
+	$(CC) -c $(CFLAGS)  $(ALL_INCS) \
+		-o objs/addon/src/ngx_http_echo_module.o \
+		../echo-nginx-module/src/ngx_http_echo_module.c
+
+
+objs/addon/src/ngx_http_echo_util.o:	$(ADDON_DEPS) \
+	../echo-nginx-module/src/ngx_http_echo_util.c
+	$(CC) -c $(CFLAGS)  $(ALL_INCS) \
+		-o objs/addon/src/ngx_http_echo_util.o \
+		../echo-nginx-module/src/ngx_http_echo_util.c
+
+
+objs/addon/src/ngx_http_echo_timer.o:	$(ADDON_DEPS) \
+	../echo-nginx-module/src/ngx_http_echo_timer.c
+	$(CC) -c $(CFLAGS)  $(ALL_INCS) \
+		-o objs/addon/src/ngx_http_echo_timer.o \
+		../echo-nginx-module/src/ngx_http_echo_timer.c
+
+
+objs/addon/src/ngx_http_echo_var.o:	$(ADDON_DEPS) \
+	../echo-nginx-module/src/ngx_http_echo_var.c
+	$(CC) -c $(CFLAGS)  $(ALL_INCS) \
+		-o objs/addon/src/ngx_http_echo_var.o \
+		../echo-nginx-module/src/ngx_http_echo_var.c
+
+
+objs/addon/src/ngx_http_echo_handler.o:	$(ADDON_DEPS) \
+	../echo-nginx-module/src/ngx_http_echo_handler.c
+	$(CC) -c $(CFLAGS)  $(ALL_INCS) \
+		-o objs/addon/src/ngx_http_echo_handler.o \
+		../echo-nginx-module/src/ngx_http_echo_handler.c
+
+
+objs/addon/src/ngx_http_echo_filter.o:	$(ADDON_DEPS) \
+	../echo-nginx-module/src/ngx_http_echo_filter.c
+	$(CC) -c $(CFLAGS)  $(ALL_INCS) \
+		-o objs/addon/src/ngx_http_echo_filter.o \
+		../echo-nginx-module/src/ngx_http_echo_filter.c
+
+
+objs/addon/src/ngx_http_echo_sleep.o:	$(ADDON_DEPS) \
+	../echo-nginx-module/src/ngx_http_echo_sleep.c
+	$(CC) -c $(CFLAGS)  $(ALL_INCS) \
+		-o objs/addon/src/ngx_http_echo_sleep.o \
+		../echo-nginx-module/src/ngx_http_echo_sleep.c
+
+
+objs/addon/src/ngx_http_echo_location.o:	$(ADDON_DEPS) \
+	../echo-nginx-module/src/ngx_http_echo_location.c
+	$(CC) -c $(CFLAGS)  $(ALL_INCS) \
+		-o objs/addon/src/ngx_http_echo_location.o \
+		../echo-nginx-module/src/ngx_http_echo_location.c
+
+
+objs/addon/src/ngx_http_echo_echo.o:	$(ADDON_DEPS) \
+	../echo-nginx-module/src/ngx_http_echo_echo.c
+	$(CC) -c $(CFLAGS)  $(ALL_INCS) \
+		-o objs/addon/src/ngx_http_echo_echo.o \
+		../echo-nginx-module/src/ngx_http_echo_echo.c
+
+
+objs/addon/src/ngx_http_echo_request_info.o:	$(ADDON_DEPS) \
+	../echo-nginx-module/src/ngx_http_echo_request_info.c
+	$(CC) -c $(CFLAGS)  $(ALL_INCS) \
+		-o objs/addon/src/ngx_http_echo_request_info.o \
+		../echo-nginx-module/src/ngx_http_echo_request_info.c
+
+
+objs/addon/src/ngx_http_echo_subrequest.o:	$(ADDON_DEPS) \
+	../echo-nginx-module/src/ngx_http_echo_subrequest.c
+	$(CC) -c $(CFLAGS)  $(ALL_INCS) \
+		-o objs/addon/src/ngx_http_echo_subrequest.o \
+		../echo-nginx-module/src/ngx_http_echo_subrequest.c
+
+
+objs/addon/src/ngx_http_echo_foreach.o:	$(ADDON_DEPS) \
+	../echo-nginx-module/src/ngx_http_echo_foreach.c
+	$(CC) -c $(CFLAGS)  $(ALL_INCS) \
+		-o objs/addon/src/ngx_http_echo_foreach.o \
+		../echo-nginx-module/src/ngx_http_echo_foreach.c
 
 
 manpage:	objs/nginx.8

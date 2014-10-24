@@ -1,4 +1,4 @@
-#define NGX_CONFIGURE " --prefix=/home/juno/git/nginxconf/nginxconf/nginx --user=juno --group=juno --conf-path=conf/common12.conf --with-http_gzip_static_module --with-http_geoip_module"
+#define NGX_CONFIGURE " --prefix=/home/juno/git/nginxconf/nginxconf/nginx --user=juno --group=juno --conf-path=conf/common12.conf --with-http_gzip_static_module --with-http_geoip_module --add-module=../ngx_devel_kit --add-module=../set-misc-nginx-module-0.26 --with-http_ssl_module --add-module=../echo-nginx-module"
 
 #ifndef NGX_COMPILER
 #define NGX_COMPILER  "gcc 4.8.2 (Ubuntu 4.8.2-19ubuntu1) "
@@ -303,8 +303,18 @@
 #endif
 
 
+#ifndef NGX_HTTP_SSL
+#define NGX_HTTP_SSL  1
+#endif
+
+
 #ifndef NGX_HTTP_X_FORWARDED_FOR
 #define NGX_HTTP_X_FORWARDED_FOR  1
+#endif
+
+
+#ifndef NDK
+#define NDK  1
 #endif
 
 
@@ -318,8 +328,13 @@
 #endif
 
 
-#ifndef NGX_OPENSSL_MD5
-#define NGX_OPENSSL_MD5  1
+#ifndef NGX_OPENSSL
+#define NGX_OPENSSL  1
+#endif
+
+
+#ifndef NGX_SSL
+#define NGX_SSL  1
 #endif
 
 
@@ -328,18 +343,23 @@
 #endif
 
 
+#ifndef NGX_OPENSSL_MD5
+#define NGX_OPENSSL_MD5  1
+#endif
+
+
 #ifndef NGX_HAVE_MD5
 #define NGX_HAVE_MD5  1
 #endif
 
 
-#ifndef NGX_HAVE_SHA1
-#define NGX_HAVE_SHA1  1
+#ifndef NGX_HAVE_OPENSSL_SHA1_H
+#define NGX_HAVE_OPENSSL_SHA1_H  1
 #endif
 
 
-#ifndef NGX_HAVE_OPENSSL_SHA1_H
-#define NGX_HAVE_OPENSSL_SHA1_H  1
+#ifndef NGX_HAVE_SHA1
+#define NGX_HAVE_SHA1  1
 #endif
 
 

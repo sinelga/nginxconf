@@ -165,7 +165,7 @@ cc -D_GNU_SOURCE -D_FILE_OFFSET_BITS=64 -o objs/autotest objs/autotest.c
 ----------------------------------------
 checking for crypt()
 
-/tmp/ccXR8Hff.o: In function `main':
+/tmp/cc5sDC2N.o: In function `main':
 autotest.c:(.text+0xf): undefined reference to `crypt'
 collect2: error: ld returned 1 exit status
 ----------
@@ -276,7 +276,7 @@ checking for statvfs()
 ----------------------------------------
 checking for dlopen()
 
-/tmp/ccsy8HSo.o: In function `main':
+/tmp/ccODcxXW.o: In function `main':
 autotest.c:(.text+0xf): undefined reference to `dlopen'
 collect2: error: ld returned 1 exit status
 ----------
@@ -431,7 +431,7 @@ checking for time_t size
 ----------------------------------------
 checking for setproctitle()
 
-/tmp/ccaLojKu.o: In function `main':
+/tmp/ccqzmFgY.o: In function `main':
 autotest.c:(.text+0xf): undefined reference to `setproctitle'
 collect2: error: ld returned 1 exit status
 ----------
@@ -460,7 +460,7 @@ checking for pwrite()
 ----------------------------------------
 checking for sys_nerr
 
-/tmp/cc4OiGgq.o: In function `main':
+/tmp/ccYvcZ55.o: In function `main':
 autotest.c:(.text+0x6): warning: `sys_nerr' is deprecated; use `strerror' or `strerror_r' instead
 135
 ----------------------------------------
@@ -490,7 +490,7 @@ checking for System V shared memory
 ----------------------------------------
 checking for POSIX semaphores
 
-/tmp/ccFWviXK.o: In function `main':
+/tmp/ccAv8xZe.o: In function `main':
 autotest.c:(.text+0x29): undefined reference to `sem_init'
 autotest.c:(.text+0x41): undefined reference to `sem_destroy'
 collect2: error: ld returned 1 exit status
@@ -579,77 +579,7 @@ checking for PCRE JIT support
 
 
 ----------------------------------------
-checking for md5 in system md library
-
-objs/autotest.c:4:17: fatal error: md5.h: No such file or directory
- #include <md5.h>
-                 ^
-compilation terminated.
-----------
-
-#include <sys/types.h>
-#include <unistd.h>
-#include <md5.h>
-
-int main() {
-    MD5_CTX md5; MD5Init(&md5);
-    return 0;
-}
-
-----------
-cc -D_GNU_SOURCE -D_FILE_OFFSET_BITS=64 -o objs/autotest objs/autotest.c -lmd
-----------
-
-----------------------------------------
-checking for md5 in system md5 library
-
-objs/autotest.c:4:17: fatal error: md5.h: No such file or directory
- #include <md5.h>
-                 ^
-compilation terminated.
-----------
-
-#include <sys/types.h>
-#include <unistd.h>
-#include <md5.h>
-
-int main() {
-    MD5_CTX md5; MD5Init(&md5);
-    return 0;
-}
-
-----------
-cc -D_GNU_SOURCE -D_FILE_OFFSET_BITS=64 -o objs/autotest objs/autotest.c -lmd5
-----------
-
-----------------------------------------
-checking for md5 in system OpenSSL crypto library
-
-
-----------------------------------------
-checking for sha1 in system md library
-
-objs/autotest.c:4:17: fatal error: sha.h: No such file or directory
- #include <sha.h>
-                 ^
-compilation terminated.
-----------
-
-#include <sys/types.h>
-#include <unistd.h>
-#include <sha.h>
-
-int main() {
-    SHA_CTX sha1; SHA1_Init(&sha1);
-    return 0;
-}
-
-----------
-cc -D_GNU_SOURCE -D_FILE_OFFSET_BITS=64 -o objs/autotest objs/autotest.c -lmd
-----------
-
-----------------------------------------
-checking for sha1 in system OpenSSL crypto library
+checking for OpenSSL library
 
 
 ----------------------------------------
