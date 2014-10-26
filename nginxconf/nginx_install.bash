@@ -46,16 +46,17 @@ nginxvakutus
 tube
 ./configure --prefix=/home/juno/git/nginxconf/nginxconf/nginx --user=juno --group=juno --conf-path=conf/tube.conf --with-http_gzip_static_module
 
-
 fortune 
 git clone https://github.com/openresty/echo-nginx-module.git 
 ./configure --prefix=/home/juno/git/nginxconf/nginxconf/nginx --user=juno --group=juno --conf-path=conf/fortune.conf --with-http_gzip_static_module --add-module=../echo-nginx-module
 
 
+redis3_0
+./configure --prefix=/home/juno/git/nginxconf/nginxconf/nginx --user=juno --group=juno --conf-path=conf/redis3_0.conf --add-module=../ngx_devel_kit --add-module=../set-misc-nginx-module-0.26 
+
+
 commonredisfeeder
-
 apt-get install libgd2-noxpm-dev
-
 ./configure --prefix=/home/juno/git/nginxconf/nginxconf/nginx --user=juno --group=juno --conf-path=conf/commonredisfeeder.conf --with-http_image_filter_module
 
 common0
