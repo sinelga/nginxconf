@@ -52,7 +52,9 @@ git clone https://github.com/openresty/echo-nginx-module.git
 
 
 redis3_0
-./configure --prefix=/home/juno/git/nginxconf/nginxconf/nginx --user=juno --group=juno --conf-path=conf/redis3_0.conf --add-module=../ngx_devel_kit --add-module=../set-misc-nginx-module-0.26 
+git clone https://github.com/simpl/ngx_devel_kit.git
+git clone https://github.com/openresty/set-misc-nginx-module.git
+./configure --prefix=/home/juno/git/nginxconf/nginxconf/nginx --user=juno --group=juno --conf-path=conf/redis3_0.conf --add-module=../ngx_devel_kit --add-module=../set-misc-nginx-module 
 
 
 commonredisfeeder
