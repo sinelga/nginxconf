@@ -97,6 +97,4 @@ common11
 ./configure --prefix=/home/juno/git/nginxconf/nginxconf/nginx --user=juno --group=juno --conf-path=conf/common11.conf --with-http_gzip_static_module --with-http_geoip_module
  
 common12 
-./configure --prefix=/home/juno/git/nginxconf/nginxconf/nginx --user=juno --group=juno --conf-path=conf/common12.conf --with-http_gzip_static_module --with-http_geoip_module --add-module=../ngx_devel_kit --add-module=../set-misc-nginx-module-0.26 --with-http_ssl_module --add-module=../echo-nginx-module
-
-
+./configure --prefix=/home/juno/git/nginxconf/nginxconf/nginx --user=juno --group=juno --conf-path=conf/common12.conf --with-http_gzip_static_module --with-http_geoip_module
