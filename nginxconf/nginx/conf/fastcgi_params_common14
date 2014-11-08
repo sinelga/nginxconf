@@ -26,8 +26,9 @@ fastcgi_param   HTTP_X_CALLBACK	$arg_callback;
 fastcgi_param   HTTP_X_BOT  $bot;
 fastcgi_param   HTTP_X_VARIANT  $variant;
 
-fastcgi_param   HTTP_X-NGINX-BROWSER-ID-GOT $uid_got;
 fastcgi_param   HTTP_X-NGINX-BROWSER-ID-SET $uid_set;
+fastcgi_param   HTTP_X-NGINX-BROWSER-ID-GOT $uid_got;
+
 
 
 
