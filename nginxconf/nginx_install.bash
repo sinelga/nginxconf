@@ -109,7 +109,7 @@ common15
 ./configure --prefix=/home/juno/git/nginxconf/nginxconf/nginx --user=juno --group=juno --conf-path=conf/common15.conf --with-http_gzip_static_module --with-http_geoip_module
 
 common16 
-./configure --prefix=/home/juno/git/nginxconf/nginxconf/nginx --user=juno --group=juno --conf-path=conf/common16.conf --with-http_gzip_static_module --with-http_geoip_module
+./configure --prefix=/home/juno/git/nginxconf/nginxconf/nginx --user=juno --group=juno --conf-path=conf/common16.conf --with-http_gzip_static_module --with-http_geoip_module --with-http_geo_module
 
 common17 
 ./configure --prefix=/home/juno/git/nginxconf/nginxconf/nginx --user=juno --group=juno --conf-path=conf/common17.conf --with-http_gzip_static_module --with-http_geoip_module
