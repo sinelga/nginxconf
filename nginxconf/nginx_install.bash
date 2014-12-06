@@ -116,3 +116,8 @@ common17
 
 common18 
 ./configure --prefix=/home/juno/git/nginxconf/nginxconf/nginx --user=juno --group=juno --conf-path=conf/common18.conf --with-http_gzip_static_module --with-http_geoip_module
+
+common19 
+./configure --prefix=/home/juno/git/nginxconf/nginxconf/nginx --user=juno --group=juno --conf-path=conf/common19.conf --with-http_gzip_static_module --with-http_geoip_module
+
+
