@@ -123,6 +123,11 @@ common19
 common20 
 ./configure --prefix=/home/juno/git/nginxconf/nginxconf/nginx --user=juno --group=juno --conf-path=conf/common20.conf --with-http_gzip_static_module --with-http_geoip_module
 
+common21 
+./configure --prefix=/home/juno/git/nginxconf/nginxconf/nginx --user=juno --group=juno --conf-path=conf/common21.conf --with-http_geoip_module
+
+
+
 
 
 
