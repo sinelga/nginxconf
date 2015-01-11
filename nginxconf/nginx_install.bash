@@ -144,6 +144,9 @@ common26
 common27 
 ./configure --prefix=/home/juno/git/nginxconf/nginxconf/nginx --user=juno --group=juno --conf-path=conf/common27.conf --with-http_geoip_module
 
+common28 
+./configure --prefix=/home/juno/git/nginxconf/nginxconf/nginx --user=juno --group=juno --conf-path=conf/common28.conf --with-http_geoip_module
+
 
 
 
