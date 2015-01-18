@@ -26,7 +26,6 @@ apt-get install build-essential
 apt-get install libpcre3 libpcre3-dev
 apt-get install zlib1g-dev
 
-wget http://nginx.org/download/nginx-1.7.6.tar.gz
 
 -------------------------------------
 
@@ -149,6 +148,11 @@ common28
 
 common29 
 ./configure --prefix=/home/juno/git/nginxconf/nginxconf/nginx --user=juno --group=juno --conf-path=conf/common29.conf --with-http_geoip_module
+
+common30
+./configure --prefix=/home/juno/git/nginxconf/nginxconf/nginx --user=juno --group=juno --conf-path=conf/common30.conf --with-http_geoip_module
+
+
 
 
 
