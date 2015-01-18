@@ -27,6 +27,7 @@ fastcgi_param   HTTP_X_BOT  $bot;
 #fastcgi_param   HTTP_X_VARIANT  $variant;
 fastcgi_param   HTTP_X_MENUPATH  $arg_menupath;
 fastcgi_param   HTTP_X_QUANT	$arg_quant;
+fastcgi_param   HTTP_X_EXTPATH  $arg_extpath;
 
 fastcgi_param   HTTP_X_NGINXBROWSERIDSET $uid_set;
 fastcgi_param   HTTP_X_NGINXBROWSERIDGOT $uid_got;
