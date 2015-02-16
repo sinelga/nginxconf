@@ -9,3 +9,6 @@
 /nginx-1.7.6/
 /nginx-1.7.8/
 /nginx-1.7.9/
+/echo-nginx-module/
+/ngx_devel_kit/
+/set-misc-nginx-module/
