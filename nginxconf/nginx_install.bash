@@ -158,6 +158,11 @@ common31
 common32
 ./configure --prefix=/home/juno/git/nginxconf/nginxconf/nginx --user=juno --group=juno --conf-path=conf/common32.conf --with-http_geoip_module
 
+imagehoster
+./configure --prefix=/home/juno/git/nginxconf/nginxconf/nginx --user=juno --group=juno --conf-path=conf/imagehoster.conf --with-http_geoip_module
+
+
+
 
 
 
