@@ -164,6 +164,11 @@ imagehoster
 common33ang
 ./configure --prefix=/home/juno/git/nginxconf/nginxconf/nginx --user=juno --group=juno --conf-path=conf/common33ang.conf --with-http_geoip_module
 
+common34ang
+./configure --prefix=/home/juno/git/nginxconf/nginxconf/nginx --user=juno --group=juno --conf-path=conf/common34ang.conf --with-http_geoip_module
+
+
+
 
 
 
