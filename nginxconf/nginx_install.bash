@@ -173,6 +173,11 @@ common35ang
 common36ang
 ./configure --prefix=/home/juno/git/nginxconf/nginxconf/nginx --user=juno --group=juno --conf-path=conf/common36ang.conf --with-http_geoip_module
 
+cv
+./configure --prefix=/home/juno/git/nginxconf/nginxconf/nginx --user=juno --group=juno --conf-path=conf/cv.conf --with-http_geoip_module
+
+
+
 
 
 
