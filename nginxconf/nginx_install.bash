@@ -188,7 +188,8 @@ common38ang
 ./configure --prefix=/home/juno/git/nginxconf/nginxconf/nginx --user=juno --group=juno --conf-path=conf/common38ang.conf --with-http_geoip_module
 
 
-
+common39ang
+./configure --prefix=/home/juno/git/nginxconf/nginxconf/nginx --user=juno --group=juno --conf-path=conf/common39ang.conf --with-http_geoip_module
 
 
 
