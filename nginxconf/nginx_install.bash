@@ -196,7 +196,8 @@ common40ang
 ./configure --prefix=/home/juno/git/nginxconf/nginxconf/nginx --user=juno --group=juno --conf-path=conf/common40ang.conf --with-http_geoip_module
 
 
-
+common41ang
+./configure --prefix=/home/juno/git/nginxconf/nginxconf/nginx --user=juno --group=juno --conf-path=conf/common41ang.conf --with-http_geoip_module
 
 
 
