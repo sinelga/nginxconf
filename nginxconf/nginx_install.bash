@@ -216,7 +216,8 @@ common45ang
 common46ang
 ./configure --prefix=/home/juno/git/nginxconf/nginxconf/nginx --user=juno --group=juno --conf-path=conf/common46ang.conf --with-http_geoip_module
 
-
+common47ang
+./configure --prefix=/home/juno/git/nginxconf/nginxconf/nginx --user=juno --group=juno --conf-path=conf/common47ang.conf --with-http_geoip_module
 
 
 
