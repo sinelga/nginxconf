@@ -1,3 +1,5 @@
+cat logs/access.log |grep -E 'www.google|bing' |grep q= |grep -v -E '.js|.css|.wof|.png'
+
 
 apt-get install libcloog-ppl-dev libcloog-ppl0
 
