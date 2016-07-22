@@ -227,6 +227,9 @@ common48ang
 common49react
 ./configure --prefix=/home/juno/git/nginxconf/nginxconf/nginx --user=juno --group=juno --conf-path=conf/common49react.conf --with-http_geoip_module
 
+cv_16
+./configure --prefix=/home/juno/git/nginxconf/nginxconf/nginx --user=juno --group=juno --conf-path=conf/cv_16.conf --with-http_geoip_module
+
 
 
 
