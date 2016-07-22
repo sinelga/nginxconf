@@ -27,6 +27,7 @@ for all install
 apt-get install build-essential
 apt-get install libpcre3 libpcre3-dev
 apt-get install zlib1g-dev
+apt-get install libgeoip-dev
 
 
 -------------------------------------
